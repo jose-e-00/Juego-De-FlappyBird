@@ -145,3 +145,4 @@ function play() {
                     requestAnimationFrame(gravedadAplicada);
                 }
                 requestAnimationFrame(gravedadAplicada);
+                let muroSeparacion = 2;
