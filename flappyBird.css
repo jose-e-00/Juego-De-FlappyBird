@@ -37,3 +37,11 @@
         position: absolute;
         right: 26%;
     }
+    
+    .bird {
+        height: 2em;
+        width: 2.5em;
+        position: fixed;
+        top: 50%;
+        left: 40%;
+    }
