@@ -129,3 +129,19 @@ function play() {
                             aveDistancia = -7.6;
                         }
                     });
+                    if (avePropiedades.top <= 0 || avePropiedades.bottom >= fondo.bottom) {
+                        estadoJuego = "End";
+                        mensaje2.innerHTML =
+                            '<img src="Game-Over-PNG-HD-Quality.png" alt="" class="logoGameHover"><br/><br/>Pulsa F5 para reiniciar';
+
+                        ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
+
+                        contenido2.innerHTML = '<img class="bird2" src="Flappy-Bird-PNG-Picture.png" alt="bird-img" />'
+                        gameover.play();
+                        return;
+                    }
+                    ave.style.top = avePropiedades.top + aveDistancia + "px";
+                    avePropiedades = ave.getBoundingClientRect();
+                    requestAnimationFrame(gravedadAplicada);
+                }
+                requestAnimationFrame(gravedadAplicada);
