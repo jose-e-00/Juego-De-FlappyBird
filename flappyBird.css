@@ -22,3 +22,11 @@
         background-image: url(4B7.gif);
         background-size: cover;
     }
+    
+    .logoReturn {
+        width: 1.5em;
+        z-index: 1;
+        position: absolute;
+        top: 60px;
+        left: 254px;
+    }
