@@ -78,3 +78,6 @@ function play() {
                 audio.play();
             }
         })
+        let muroSprite = document.querySelectorAll(".muroSprite");
+        muroSprite.forEach((element) => {
+                    let muroConPropiedades = element.getBoundingClientRect();
