@@ -84,3 +84,23 @@ function play() {
                     let muroSprite = document.querySelectorAll(".muroSprite");
                     muroSprite.forEach((element) => {
                                 let muroConPropiedades = element.getBoundingClientRect();
+                                else {
+                                    if (
+                                        avePropiedades.left <
+                                        muroConPropiedades.left + muroConPropiedades.width &&
+                                        avePropiedades.left + avePropiedades.width >
+                                        muroConPropiedades.left &&
+                                        avePropiedades.top <
+                                        muroConPropiedades.top + muroConPropiedades.height &&
+                                        avePropiedades.top + avePropiedades.height > muroConPropiedades.top
+                                    ) {
+                                        estadoJuego = "End";
+                                        mensaje.innerHTML =
+                                            '<h3>Haz Perdido Pulsa Enter</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+
+                                        ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
+
+                                        contenido2.innerHTML = '<img class="bird2" src="Flappy-Bird-PNG-Picture.png" alt="bird-img" />'
+                                        inpacto.play();
+                                        return;
+                                    }
