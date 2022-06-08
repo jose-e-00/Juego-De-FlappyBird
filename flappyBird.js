@@ -32,3 +32,19 @@ let finJuego = new Audio("007741506_prev.mp3");
 finJuego.loop = false;
 finJuego.playbackRate = 2;
 finJuego.play();
+
+document.addEventListener("keydown", (e) => {
+    // Inicia el juego si se presiona la tecla enter
+    if (e.key == "Enter" && estadoJuego != "Play") {
+        document.querySelectorAll(".muroSprite").forEach((e) => {
+            e.remove();
+        });
+
+        estadoJuego = "Play";
+        mensaje.innerHTML = "";
+
+        tituloPuntaje.innerHTML = "Score : ";
+        valorPuntaje.innerHTML = "0";
+        play();
+    }
+});
