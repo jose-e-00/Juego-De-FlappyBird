@@ -93,3 +93,8 @@
         top: 1%;
         left: 21%;
     }
+    
+    .score_val {
+        color: ghostwhite;
+        font-family: 'Courier New', Courier, monospace;
+    }
