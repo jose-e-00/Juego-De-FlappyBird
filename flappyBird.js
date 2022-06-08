@@ -144,15 +144,15 @@ function play() {
         requestAnimationFrame(gravedadAplicada);
     }
     requestAnimationFrame(gravedadAplicada);
-    let muroSeparacion = 2;
+    let muroSeparacion = 0;
 
     function creaMuro() {
         if (estadoJuego != "Play") return;
 
         if (muroSeparacion >= 35) {
-            muroSeparacion = 2;
+            muroSeparacion = 0;
 
-            let muroPosicion = Math.random() * 225;
+            let muroPosicion = Math.random() * 235;
             let muroInvertido = document.createElement("div");
             muroInvertido.className = "muroSprite";
             muroInvertido.style.top = "0px";
@@ -162,7 +162,7 @@ function play() {
 
 
             document.body.firstElementChild.appendChild(muroInvertido);
-            let muroHeight = Math.random() * 285;
+            let muroHeight = Math.random() * 265;
             let muroSprite = document.createElement("div");
             muroSprite.className = "muroSprite";
             muroSprite.style.bottom = "70px";
