@@ -83,3 +83,13 @@
         left: 38%;
         text-align: center;
     }
+    
+    .score {
+        position: fixed;
+        z-index: 1;
+        font-size: 2.2rem;
+        font-weight: 500;
+        color: Yellow;
+        top: 1%;
+        left: 21%;
+    }
