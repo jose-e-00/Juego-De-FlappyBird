@@ -59,3 +59,15 @@
         width: 65px;
         background-image: url(tile_brick_top.png);
     }
+    
+    .mensaje {
+        position: absolute;
+        z-index: 1;
+        text-transform: capitalize;
+        font-size: 2rem;
+        font-weight: 100;
+        color: black;
+        top: 35%;
+        left: 31%;
+        text-align: center;
+    }
