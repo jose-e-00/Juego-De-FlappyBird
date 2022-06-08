@@ -48,3 +48,28 @@ document.addEventListener("keydown", (e) => {
         play();
     }
 });
+
+function play() {
+    function movimiento() {
+        // Detectar si el juego ha terminado
+        if (estadoJuego != "Play") return;
+        // Vamos incrementando la velocidad del juego
+        switch (valorPuntaje.innerHTML) {
+            case "10":
+                velocidadMovimiento = 8;
+                break;
+            case "25":
+                velocidadMovimiento = 12;
+                muroSeparacion = Math.random() * 7;
+                break;
+            case "35":
+                velocidadMovimiento = 15;
+                muroSeparacion = Math.random() * 9;
+                break;
+            case "50":
+                mensaje.innerHTML =
+                    '<h3>¡Felicidades Terminaste El Juego!</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                finJuego.play();
+                estadoJuego = "End";
+                return;
+        }
