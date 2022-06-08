@@ -81,3 +81,6 @@ function play() {
         let muroSprite = document.querySelectorAll(".muroSprite");
         muroSprite.forEach((element) => {
                     let muroConPropiedades = element.getBoundingClientRect();
+                    let muroSprite = document.querySelectorAll(".muroSprite");
+                    muroSprite.forEach((element) => {
+                                let muroConPropiedades = element.getBoundingClientRect();
