@@ -78,71 +78,102 @@ function play() {
         })
         let muroSprite = document.querySelectorAll(".muroSprite");
         muroSprite.forEach((element) => {
-                    let muroConPropiedades = element.getBoundingClientRect();
-                    let muroSprite = document.querySelectorAll(".muroSprite");
-                    muroSprite.forEach((element) => {
-                        let muroConPropiedades = element.getBoundingClientRect();
-                        else {
-                            if (
-                                avePropiedades.left <
-                                muroConPropiedades.left + muroConPropiedades.width &&
-                                avePropiedades.left + avePropiedades.width >
-                                muroConPropiedades.left &&
-                                avePropiedades.top <
-                                muroConPropiedades.top + muroConPropiedades.height &&
-                                avePropiedades.top + avePropiedades.height > muroConPropiedades.top
-                            ) {
-                                estadoJuego = "End";
-                                mensaje.innerHTML =
-                                    '<h3>Haz Perdido Pulsa Enter</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+            let muroConPropiedades = element.getBoundingClientRect();
+            if (muroConPropiedades.right <= 365) {
+                element.remove();
+            } else {
+                if (
+                    avePropiedades.left <
+                    muroConPropiedades.left + muroConPropiedades.width &&
+                    avePropiedades.left + avePropiedades.width >
+                    muroConPropiedades.left &&
+                    avePropiedades.top <
+                    muroConPropiedades.top + muroConPropiedades.height &&
+                    avePropiedades.top + avePropiedades.height > muroConPropiedades.top
+                ) {
+                    estadoJuego = "End";
+                    mensaje.innerHTML =
+                        '<h3>Haz Perdido Pulsa Enter</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
 
-                                ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
+                    ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
 
-                                contenido2.innerHTML = '<img class="bird2" src="Flappy-Bird-PNG-Picture.png" alt="bird-img" />'
-                                inpacto.play();
-                                return;
-                            } else {
-                                if (
-                                    muroConPropiedades.right < avePropiedades.left &&
-                                    muroConPropiedades.right + velocidadMovimiento >=
-                                    avePropiedades.left &&
-                                    element.incrementarRecord == "1"
-                                ) {
-                                    valorPuntaje.innerHTML = +valorPuntaje.innerHTML + 1;
-                                }
-                                element.style.left =
-                                    muroConPropiedades.left - velocidadMovimiento + "px";
-                            }
-                        }
-                    });
-
-                    requestAnimationFrame(movimiento);
-                }
-                requestAnimationFrame(movimiento);
-                let aveDistancia = 0;
-
-                function gravedadAplicada() {
-                    if (estadoJuego != "Play") return;
-                    aveDistancia = aveDistancia + gravedad;
-                    document.addEventListener("keydown", (e) => {
-                        if (e.key == "ArrowUp" || e.key == " ") {
-                            aveDistancia = -7.6;
-                        }
-                    });
-                    if (avePropiedades.top <= 0 || avePropiedades.bottom >= fondo.bottom) {
-                        estadoJuego = "End";
-                        mensaje2.innerHTML =
-                            '<img src="Game-Over-PNG-HD-Quality.png" alt="" class="logoGameHover"><br/><br/>Pulsa F5 para reiniciar';
-
-                        ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
-
-                        contenido2.innerHTML = '<img class="bird2" src="Flappy-Bird-PNG-Picture.png" alt="bird-img" />'
-                        gameover.play();
-                        return;
+                    contenido2.innerHTML = '<img class="bird2" src="Flappy-Bird-PNG-Picture.png" alt="bird-img" />'
+                    inpacto.play();
+                    return;
+                } else {
+                    if (
+                        muroConPropiedades.right < avePropiedades.left &&
+                        muroConPropiedades.right + velocidadMovimiento >=
+                        avePropiedades.left &&
+                        element.incrementarRecord == "1"
+                    ) {
+                        valorPuntaje.innerHTML = +valorPuntaje.innerHTML + 1;
                     }
-                    ave.style.top = avePropiedades.top + aveDistancia + "px";
-                    avePropiedades = ave.getBoundingClientRect();
-                    requestAnimationFrame(gravedadAplicada);
+                    element.style.left =
+                        muroConPropiedades.left - velocidadMovimiento + "px";
                 }
-                requestAnimationFrame(gravedadAplicada);
-                let muroSeparacion = 2;
+            }
+        });
+
+        requestAnimationFrame(movimiento);
+    }
+    requestAnimationFrame(movimiento);
+    let aveDistancia = 0;
+
+    function gravedadAplicada() {
+        if (estadoJuego != "Play") return;
+        aveDistancia = aveDistancia + gravedad;
+        document.addEventListener("keydown", (e) => {
+            if (e.key == "ArrowUp" || e.key == " ") {
+                aveDistancia = -7.6;
+            }
+        });
+        if (avePropiedades.top <= 0 || avePropiedades.bottom >= fondo.bottom) {
+            estadoJuego = "End";
+            mensaje2.innerHTML =
+                '<img src="Game-Over-PNG-HD-Quality.png" alt="" class="logoGameHover"><br/><br/>Pulsa F5 para reiniciar';
+
+            ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
+
+            contenido2.innerHTML = '<img class="bird2" src="Flappy-Bird-PNG-Picture.png" alt="bird-img" />'
+            gameover.play();
+            return;
+        }
+        ave.style.top = avePropiedades.top + aveDistancia + "px";
+        avePropiedades = ave.getBoundingClientRect();
+        requestAnimationFrame(gravedadAplicada);
+    }
+    requestAnimationFrame(gravedadAplicada);
+    let muroSeparacion = 2;
+
+    function creaMuro() {
+        if (estadoJuego != "Play") return;
+
+        if (muroSeparacion >= 35) {
+            muroSeparacion = 2;
+
+            let muroPosicion = Math.random() * 225;
+            let muroInvertido = document.createElement("div");
+            muroInvertido.className = "muroSprite";
+            muroInvertido.style.top = "0px";
+            muroInvertido.style.left = "1000px";
+            muroInvertido.style.height = muroPosicion + "px";
+            muroInvertido.style.transform = "rotate(180deg)";
+
+
+            document.body.firstElementChild.appendChild(muroInvertido);
+            let muroHeight = Math.random() * 285;
+            let muroSprite = document.createElement("div");
+            muroSprite.className = "muroSprite";
+            muroSprite.style.bottom = "70px";
+            muroSprite.style.height = muroHeight + "px";
+            muroSprite.style.left = "1165px";
+            muroSprite.incrementarRecord = "1";
+
+            document.body.firstElementChild.appendChild(muroSprite);
+        }
+        muroSeparacion += 1;
+        requestAnimationFrame(creaMuro);
+    }
+    requestAnimationFrame(creaMuro);
+}
