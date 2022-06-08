@@ -30,3 +30,10 @@
         top: 60px;
         left: 254px;
     }
+    
+    .logoGameHover {
+        width: 4.5em;
+        z-index: 1;
+        position: absolute;
+        right: 26%;
+    }
