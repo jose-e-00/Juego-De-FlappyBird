@@ -83,24 +83,43 @@ function play() {
                     let muroConPropiedades = element.getBoundingClientRect();
                     let muroSprite = document.querySelectorAll(".muroSprite");
                     muroSprite.forEach((element) => {
-                                let muroConPropiedades = element.getBoundingClientRect();
-                                else {
-                                    if (
-                                        avePropiedades.left <
-                                        muroConPropiedades.left + muroConPropiedades.width &&
-                                        avePropiedades.left + avePropiedades.width >
-                                        muroConPropiedades.left &&
-                                        avePropiedades.top <
-                                        muroConPropiedades.top + muroConPropiedades.height &&
-                                        avePropiedades.top + avePropiedades.height > muroConPropiedades.top
-                                    ) {
-                                        estadoJuego = "End";
-                                        mensaje.innerHTML =
-                                            '<h3>Haz Perdido Pulsa Enter</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                        let muroConPropiedades = element.getBoundingClientRect();
+                        else {
+                            if (
+                                avePropiedades.left <
+                                muroConPropiedades.left + muroConPropiedades.width &&
+                                avePropiedades.left + avePropiedades.width >
+                                muroConPropiedades.left &&
+                                avePropiedades.top <
+                                muroConPropiedades.top + muroConPropiedades.height &&
+                                avePropiedades.top + avePropiedades.height > muroConPropiedades.top
+                            ) {
+                                estadoJuego = "End";
+                                mensaje.innerHTML =
+                                    '<h3>Haz Perdido Pulsa Enter</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
 
-                                        ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
+                                ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
 
-                                        contenido2.innerHTML = '<img class="bird2" src="Flappy-Bird-PNG-Picture.png" alt="bird-img" />'
-                                        inpacto.play();
-                                        return;
-                                    }
+                                contenido2.innerHTML = '<img class="bird2" src="Flappy-Bird-PNG-Picture.png" alt="bird-img" />'
+                                inpacto.play();
+                                return;
+                            } else {
+                                // Aumenta la puntuación si el jugador
+                                // ha esquivado con éxito el juego
+                                if (
+                                    muroConPropiedades.right < avePropiedades.left &&
+                                    muroConPropiedades.right + velocidadMovimiento >=
+                                    avePropiedades.left &&
+                                    element.incrementarRecord == "1"
+                                ) {
+                                    valorPuntaje.innerHTML = +valorPuntaje.innerHTML + 1;
+                                }
+                                element.style.left =
+                                    muroConPropiedades.left - velocidadMovimiento + "px";
+                            }
+                        }
+                    });
+
+                    requestAnimationFrame(movimiento);
+                }
+                requestAnimationFrame(movimiento);
