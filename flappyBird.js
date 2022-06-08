@@ -51,9 +51,7 @@ document.addEventListener("keydown", (e) => {
 
 function play() {
     function movimiento() {
-        // Detectar si el juego ha terminado
         if (estadoJuego != "Play") return;
-        // Vamos incrementando la velocidad del juego
         switch (valorPuntaje.innerHTML) {
             case "10":
                 velocidadMovimiento = 8;
@@ -104,8 +102,6 @@ function play() {
                                 inpacto.play();
                                 return;
                             } else {
-                                // Aumenta la puntuación si el jugador
-                                // ha esquivado con éxito el juego
                                 if (
                                     muroConPropiedades.right < avePropiedades.left &&
                                     muroConPropiedades.right + velocidadMovimiento >=
@@ -123,3 +119,13 @@ function play() {
                     requestAnimationFrame(movimiento);
                 }
                 requestAnimationFrame(movimiento);
+                let aveDistancia = 0;
+
+                function gravedadAplicada() {
+                    if (estadoJuego != "Play") return;
+                    aveDistancia = aveDistancia + gravedad;
+                    document.addEventListener("keydown", (e) => {
+                        if (e.key == "ArrowUp" || e.key == " ") {
+                            aveDistancia = -7.6;
+                        }
+                    });
