@@ -53,3 +53,9 @@
         left: 47%;
         top: 58%;
     }
+    
+    .muroSprite {
+        position: fixed;
+        width: 65px;
+        background-image: url(tile_brick_top.png);
+    }
