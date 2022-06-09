@@ -1,5 +1,4 @@
 let fondo = document.querySelector(".background").getBoundingClientRect();
-<<<<<<< HEAD
 let ave = document.querySelector(".bird");
 let ave2 = document.querySelectorAll(".background");
 let contenido2 = document.createElement("div");
@@ -178,18 +177,3 @@ function play() {
     }
     requestAnimationFrame(creaMuro);
 }
-=======
-let avePropiedades = ave.getBoundingClientRect();
-let contenido2 = document.createElement("div");
-let ave = document.querySelector(".bird");
-let ave2 = document.querySelectorAll(".background");
-let gravedad = 0.5;
-let velocidadMovimiento = 6;
-let valorPuntaje = document.querySelector(".score_val");
-let mensaje = document.querySelector(".mensaje");
-let tituloPuntaje = document.querySelector(".score_title");
-let logoGameHover = document.querySelector(".logoGameHover");
-let logoReturn = document.querySelector(".logoReturn");
-let mensaje2 = document.querySelector(".mensaje2");
-let estadoJuego = "Start";
->>>>>>> 60ee947bedc1e5b0d62637089af782ce09d66b16
