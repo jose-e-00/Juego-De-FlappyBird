@@ -66,7 +66,7 @@ function play() {
                 break;
             case "50":
                 mensaje.innerHTML =
-                    '<h3>¡Felicidades Terminaste El Juego!</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                    '<h3 id="popup">¡Felicidades Terminaste El Juego!</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
                 finJuego.play();
                 estadoJuego = "End";
                 return;
