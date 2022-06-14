@@ -1,11 +1,12 @@
 let fondo = document.querySelector(".background").getBoundingClientRect();
+let fondo2 = document.querySelector(".parent-container");
 let ave = document.querySelector(".bird");
 let ave2 = document.querySelectorAll(".background");
 let contenido2 = document.createElement("div");
 let avePropiedades = ave.getBoundingClientRect();
 let valorPuntaje = document.querySelector(".score_val");
 let logoGameHover = document.querySelector(".logoGameHover");
-let velocidadMovimiento = 6;
+let velocidadMovimiento = 8;
 let gravedad = 0.5;
 let mensaje = document.querySelector(".mensaje");
 let tituloPuntaje = document.querySelector(".score_title");
@@ -13,33 +14,38 @@ let logoReturn = document.querySelector(".logoReturn");
 let mensaje2 = document.querySelector(".mensaje2");
 let estadoJuego = "Start";
 
-let audio = new Audio("audio.mp3");
-audio.play();
+let audio = new Audio("salto.mp3");
+
 audio.loop = false;
-audio.playbackRate = 2;
+audio.playbackRate = 1;
 
-let inpacto = new Audio("inpacto.mp3");
+let inpacto = new Audio("inpacto2.mp3");
 inpacto.loop = false;
-inpacto.playbackRate = 2;
-inpacto.play();
+inpacto.playbackRate = 4;
 
-let gameover = new Audio("gameOver.mp3");
+
+let gameover = new Audio("caida.mp3");
 gameover.loop = false;
-gameover.playbackRate = 2;
-gameover.play();
+gameover.playbackRate = 1;
+
 
 let finJuego = new Audio("007741506_prev.mp3");
 finJuego.loop = false;
-finJuego.playbackRate = 2;
-finJuego.play();
+finJuego.playbackRate = 0.8;
+
+let musicFondo = new Audio("donkey-kong-country.mp3");
+musicFondo.loop = true;
+musicFondo.playbackRate = 1;
+
 
 document.addEventListener("keydown", (e) => {
-    // Inicia el juego si se presiona la tecla enter
+
     if (e.key == "Enter" && estadoJuego != "Play") {
         document.querySelectorAll(".muroSprite").forEach((e) => {
             e.remove();
         });
 
+        musicFondo.play();
         estadoJuego = "Play";
         mensaje.innerHTML = "";
 
@@ -53,22 +59,19 @@ function play() {
     function movimiento() {
         if (estadoJuego != "Play") return;
         switch (valorPuntaje.innerHTML) {
-            case "10":
-                velocidadMovimiento = 8;
-                break;
-            case "25":
+            case "20":
                 velocidadMovimiento = 12;
-                muroSeparacion = Math.random() * 7;
                 break;
-            case "35":
-                velocidadMovimiento = 15;
-                muroSeparacion = Math.random() * 9;
-                break;
+
             case "50":
                 mensaje.innerHTML =
-                    '<h3 id="popup">¡Felicidades Terminaste El Juego!</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                    '<h3>!Haz Ganado Oprime Refrescar¡<h3/><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                document.body.firstElementChild.style.backgroundImage = "url(juego-de-victoria-ui-elemento-diseño-vectorial-caricatura-nivel-icono-signo-superior-marca-cinta-roja-estrellas-oro-resultado-del-226401100.jpg)"
+
                 finJuego.play();
                 estadoJuego = "End";
+                musicFondo.pause();
+                document.removeEventListener()
                 return;
         }
         document.addEventListener("keydown", (e) => {
@@ -93,7 +96,8 @@ function play() {
                 ) {
                     estadoJuego = "End";
                     mensaje.innerHTML =
-                        '<h3>Haz Perdido Pulsa Enter</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                        '<h3>Haz Perdido Oprime Refrescar</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                    musicFondo.pause();
 
                     ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
 
@@ -131,7 +135,8 @@ function play() {
         if (avePropiedades.top <= 0 || avePropiedades.bottom >= fondo.bottom) {
             estadoJuego = "End";
             mensaje2.innerHTML =
-                '<img src="Game-Over-PNG-HD-Quality.png" alt="" class="logoGameHover"><br/><br/>Pulsa F5 para reiniciar';
+                '<img src="Game-Over-Logo-PNG-Image.png" alt="" class="logoGameHover"><br/><br/><h3>Oprime Refrescar Para Reiniciar<h3/>';
+            musicFondo.pause();
 
             ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
 
