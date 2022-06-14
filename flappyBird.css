@@ -7,19 +7,57 @@
     body {
         height: 100vh;
         width: 100vw;
+        background: linear-gradient(to top, transparent, black);
+    }
+    
+    .boton {
+        position: relative;
+        bottom: 70%;
+        left: 40px;
+        background: Maroon;
+        font-weight: 600;
+        font-size: large;
+        width: 150px;
+        color: aliceblue;
+        box-shadow: 1px 1px 3px 4px black;
+        border-radius: 20px;
+        text-align: center;
+        border: groove;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .boton:hover {
+        background: Navy;
+        transform: scale(1.40);
     }
     
     .parent-container {
         max-width: 60vw;
         height: 580px;
-        border: 4px solid black;
+        border: 2px solid DarkOrange;
         margin: 0 auto;
+        box-shadow: 1px 1px 10px 1px orange;
+        background-image: url(2f2f3bcd0cb461f.gif);
+        background-size: cover;
     }
     
     .background {
         height: 100%;
         width: 100%;
-        background-image: url(4B7.gif);
+    }
+    
+    .background2 {
+        height: 100%;
+        width: 100%;
+        background-image: url(fire-102.gif);
+        background-size: cover;
+        z-index: +1;
+    }
+    
+    .imagen2 {
+        width: 100%;
+        height: 100%;
         background-size: cover;
     }
     
@@ -35,7 +73,7 @@
         width: 4.5em;
         z-index: 1;
         position: absolute;
-        right: 26%;
+        right: 35%;
     }
     
     .bird {
@@ -65,8 +103,9 @@
         z-index: 1;
         text-transform: capitalize;
         font-size: 2rem;
-        font-weight: 100;
-        color: black;
+        font-weight: 600;
+        text-shadow: 2px 4px 3px black;
+        color: red;
         top: 35%;
         left: 31%;
         text-align: center;
@@ -76,11 +115,12 @@
         position: absolute;
         z-index: 1;
         text-transform: capitalize;
-        font-size: 2rem;
+        font-size: xx-large;
         font-weight: 100;
-        color: black;
+        text-shadow: 10px 0px 5px black;
+        color: orange;
         top: 35%;
-        left: 38%;
+        left: 26%;
         text-align: center;
     }
     
