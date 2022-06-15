@@ -12,6 +12,7 @@ let mensaje = document.querySelector(".mensaje");
 let tituloPuntaje = document.querySelector(".score_title");
 let logoReturn = document.querySelector(".logoReturn");
 let mensaje2 = document.querySelector(".mensaje2");
+let botonPlay = document.querySelector(".botonPlay");
 let estadoJuego = "Start";
 
 let audio = new Audio("salto.mp3");
@@ -37,14 +38,13 @@ let musicFondo = new Audio("donkey-kong-country.mp3");
 musicFondo.loop = true;
 musicFondo.playbackRate = 1;
 
+botonPlay.addEventListener("click", playClick);
 
-document.addEventListener("keydown", (e) => {
-
-    if (e.key == "Enter" && estadoJuego != "Play") {
+function playClick() {
+    if (estadoJuego != "Play") {
         document.querySelectorAll(".muroSprite").forEach((e) => {
             e.remove();
         });
-
         musicFondo.play();
         estadoJuego = "Play";
         mensaje.innerHTML = "";
@@ -53,7 +53,7 @@ document.addEventListener("keydown", (e) => {
         valorPuntaje.innerHTML = "0";
         play();
     }
-});
+}
 
 function play() {
     function movimiento() {
@@ -65,7 +65,7 @@ function play() {
 
             case "50":
                 mensaje.innerHTML =
-                    '<h3>!Haz Ganado Oprime Refrescar¡<h3/><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                    '<h3>¡Haz Ganado Oprime <B style="color: Orange;">Refrescar</B>!<h3/><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
                 document.body.firstElementChild.style.backgroundImage = "url(juego-de-victoria-ui-elemento-diseño-vectorial-caricatura-nivel-icono-signo-superior-marca-cinta-roja-estrellas-oro-resultado-del-226401100.jpg)"
 
                 finJuego.play();
@@ -96,7 +96,7 @@ function play() {
                 ) {
                     estadoJuego = "End";
                     mensaje.innerHTML =
-                        '<h3>Haz Perdido Oprime Refrescar</h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
+                        '<h3>Haz Perdido Oprime <B style="color: Orange;">Refrescar</B></h3><br/><img src="Clockwise-arrow256_25064.png" alt="" class="logoReturn">';
                     musicFondo.pause();
 
                     ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
@@ -135,7 +135,7 @@ function play() {
         if (avePropiedades.top <= 0 || avePropiedades.bottom >= fondo.bottom) {
             estadoJuego = "End";
             mensaje2.innerHTML =
-                '<img src="Game-Over-Logo-PNG-Image.png" alt="" class="logoGameHover"><br/><br/><h3>Oprime Refrescar Para Reiniciar<h3/>';
+                '<img src="Game-Over-Logo-PNG-Image.png" alt="" class="logoGameHover"><br/><br/><h3>Oprime <b style="color: red;">Refrescar</b> Para Reiniciar<h3/>';
             musicFondo.pause();
 
             ave2[0].firstElementChild.parentElement.replaceChild(contenido2, ave2[0].firstElementChild);
@@ -155,7 +155,7 @@ function play() {
         if (estadoJuego != "Play") return;
 
         if (muroSeparacion >= 35) {
-            muroSeparacion = 0;
+            muroSeparacion = 6;
 
             let muroPosicion = Math.random() * 235;
             let muroInvertido = document.createElement("div");
