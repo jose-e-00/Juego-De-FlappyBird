@@ -22,13 +22,41 @@
         box-shadow: 1px 1px 3px 4px black;
         border-radius: 20px;
         text-align: center;
-        border: groove;
+        border: 4px groove;
         cursor: pointer;
         transition: transform 0.3s ease-in-out;
     }
     
+    .botonPlay {
+        position: relative;
+        bottom: 60%;
+        left: 40px;
+        background: Maroon;
+        font-weight: 600;
+        font-size: large;
+        width: 150px;
+        color: aliceblue;
+        box-shadow: 1px 1px 3px 4px black;
+        border-radius: 20px;
+        text-align: center;
+        border: 4px groove;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    .botonPlay:hover {
+        transform: scale(1.40);
+    }
+    
+    .botonPlay:active {
+        background: orangered;
+    }
+    
+    .boton:active {
+        background: red;
+    }
+    
     .boton:hover {
-        background: Navy;
         transform: scale(1.40);
     }
     
